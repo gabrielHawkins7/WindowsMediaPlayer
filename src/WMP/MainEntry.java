@@ -17,18 +17,20 @@ public class MainEntry extends Application {
 
     public void start(Stage primaryStage) throws IOException {
     	//FXML Setup and Start
-    	FXMLLoader loader = new FXMLLoader(getClass().getResource("MainEntry.fxml"));
+    	FXMLLoader loader = new FXMLLoader(getClass().getResource("StartingScreen.fxml"));
     	Parent root = loader.load();
-    	MainEntryController mec = loader.getController();
-        mec.s = primaryStage;
-        Scene scene = new Scene(root, 600, 400);
+        
+        //Initialize Controllers
+        DataHandler data = new DataHandler(primaryStage, root);
+        data.ssc = loader.getController();
+        data.ssc.initialize(data);
+        
+        Scene scene = new Scene(data.root, 600, 400);
     	primaryStage.setScene(scene);
         primaryStage.show();
         
-        
-        Label l = new Label("No Media Loaded");
-        l.setTextFill(Color.WHITE);
-        mec.mainView.setCenter(l);
-        //mec.SetMedia();
+        //MainEntryController mec = loader.getController();
+        //mec.s = primaryStage;
+        //mec.r = root;
     }
 }
