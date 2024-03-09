@@ -84,11 +84,13 @@ public class MainViewController {
 				@SuppressWarnings("deprecation")
 				@Override
 				public void changed(ObservableValue<? extends Duration> observable, Duration oldValue, Duration newValue) {
-					int sec = (int) (100 * mediaPlayer.getCurrentTime().toMinutes());
-					int min = (int) (mediaPlayer.getCurrentTime().toMinutes());
-					int durSec = (int) (100 * mediaPlayer.getTotalDuration().toMinutes());
-					int durMin = (int) (mediaPlayer.getTotalDuration().toMinutes());
-					String ct = "" + min + ":" + sec + "/" + durMin + ":" + durSec;
+					int sec = (int) (100 * mediaPlayer.getCurrentTime().toMinutes()) % 60;
+					int min = (int) (mediaPlayer.getCurrentTime().toMinutes()) % 60;
+					int hrs = (int) mediaPlayer.getCurrentTime().toMinutes() / 60;
+					int durSec = (int) (100 * mediaPlayer.getTotalDuration().toMinutes()) % 60;
+					int durMin = (int) (mediaPlayer.getTotalDuration().toMinutes()) % 60;
+					int durHrs = (int) (mediaPlayer.getTotalDuration().toMinutes()) / 60;
+					String ct = hrs + ":" + min + ":" + sec + "/" + durHrs + ":" + durMin + ":" + durSec;
 					currentTime.setText(ct);
 					progBar.setValue(mediaPlayer.getCurrentTime().divide(mediaPlayer.getTotalDuration()).toMillis()*100.0);
 				}

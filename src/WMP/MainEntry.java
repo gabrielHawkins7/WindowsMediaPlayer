@@ -28,9 +28,5 @@ public class MainEntry extends Application {
         Scene scene = new Scene(data.root, 600, 400);
     	primaryStage.setScene(scene);
         primaryStage.show();
-        
-        //MainEntryController mec = loader.getController();
-        //mec.s = primaryStage;
-        //mec.r = root;
     }
 }
