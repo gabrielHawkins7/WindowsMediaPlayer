@@ -65,7 +65,7 @@
             </MediaView>
          </center>
       </BorderPane>
-      <HBox alignment="CENTER" prefHeight="41.0" prefWidth="640.0" spacing="10.0" style="-fx-background-color: linear-gradient(to top, black,  midnightblue);">
+      <HBox alignment="CENTER" prefHeight="41.0" spacing="10.0" style="-fx-background-color: linear-gradient(to top, black,  midnightblue);">
          <children>
             <Button fx:id="playPauseControl" mnemonicParsing="false" text="&gt;" />
             <Label fx:id="currentTime" text="0:0:0" textFill="WHITE">
@@ -73,7 +73,7 @@
                   <Font size="17.0" />
                </font>
             </Label>
-            <Slider fx:id="progBar" />
+            <Slider fx:id="progBar" prefHeight="16.0" prefWidth="417.0" />
          </children>
       </HBox>
    </children>
