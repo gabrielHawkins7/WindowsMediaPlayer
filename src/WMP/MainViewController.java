@@ -12,10 +12,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.LinearGradient;
 import javafx.scene.media.MediaPlayer.Status;
 import javafx.util.Duration;
 
@@ -127,5 +130,17 @@ public class MainViewController {
 	    @FXML
 	    void chooseFile(ActionEvent event) throws IOException {
 	    	data.chooseFile();
+	    }
+	    
+	    @FXML
+	    void setFullScreen() {
+	    	if(data.primaryStage.isFullScreen()) {
+	    		data.primaryStage.setFullScreen(false);
+	    		mainView.setBackground(Background.fill(LinearGradient.valueOf("to top, midnightblue,darkslateblue")));
+	    	}else {
+	    		data.primaryStage.setFullScreen(true);
+	    		mainView.setBackground(Background.fill(Color.BLACK));
+	    		
+	    	}
 	    }
 }
