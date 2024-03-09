@@ -24,10 +24,12 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaPlayer.Status;
 import javafx.scene.media.MediaView;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class MainEntryController {
-	
+	public Stage s;
 	
 	@FXML
 	public BorderPane mainView;
@@ -45,10 +47,13 @@ public class MainEntryController {
 	@FXML
 	public Button playPauseControl;
 	
+	public File openFile;
+	
 	
 	public void SetMedia() throws MalformedURLException {
-		File mediaFile = new File("./testAssets/video.mp4");
-        Media media = new Media(mediaFile.toURI().toURL().toString());
+		//File mediaFile = new File("./testAssets/video.mp4");
+		mainView.setCenter(mediaView);
+        Media media = new Media(openFile.toURI().toURL().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
         mediaView.setMediaPlayer(mediaPlayer);
         mediaView.preserveRatioProperty();
@@ -103,11 +108,15 @@ public class MainEntryController {
 				}else {
 					mediaPlayer.play();
 					playPauseControl.setText(">");
-
 				}
 			}
 		});
-        
-        
 	}	
+	
+	public void chooseFile() throws MalformedURLException {
+		FileChooser fileChooser = new FileChooser();
+		openFile = fileChooser.showOpenDialog(s);
+		SetMedia();
+	}
+	
 }
